@@ -1923,6 +1923,7 @@ debugger
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+       <form action="" method="post"novalidate autocomplete="off" id="modalItem">
         <div class="row   ">
   
           <div class="col-md-12 mt-3 ">
@@ -2140,6 +2141,8 @@ debugger
   
           </div>
         </div>
+        </form>
+      </div>
       </div>
     </div>
   </div>
@@ -3448,91 +3451,95 @@ $.ajax({
 
 <!-- create item -->
 
+
 <script>
-    function create_item() {
-  
-      if (document.getElementsByName('radio1')[0].checked) {
-        var radio = document.getElementsByName('radio1')[0].value
-      } else {
-        var radio = document.getElementsByName('radio2')[0].value
-      }
-  
-      if (document.getElementsByName('type')[0].checked) {
-        var type = document.getElementsByName('type')[0].value
-      } else {
-        var type = document.getElementsByName('type2')[0].value
-      }
-  
-      var inter = document.getElementsByName('inter')[0].value
-      var intra = document.getElementsByName('intra')[0].value
-  
-      var name = document.getElementsByName('name')[0].value
-      var unit = document.getElementsByName('unit')[0].value
-      var sel_price = document.getElementsByName('sel_price')[0].value
-      var sel_acc = document.getElementsByName('sel_acc')[0].value
-      var sel_desc = document.getElementsByName('sel_desc')[0].value
-      var cost_price = document.getElementsByName('cost_price')[0].value
-      var cost_acc = document.getElementsByName('cost_acc')[0].value
-      var cost_desc = document.getElementsByName('cost_desc')[0].value
-      var hsn = document.getElementsByName('HSN')[0].value
-  
-      $.ajax({
-  
-        type: "GET",
-        url: "{% url 'additem_bills' %}",
-  
-        data: {
-          radios: radio,
-          inters: inter,
-          intras: intra,
-          types: type,
-          names: name,
-          units: unit,
-          sel_prices: sel_price,
-          sel_accs: sel_acc,
-          s_descs: sel_desc,
-          cost_prices: cost_price,
-          cost_accs: cost_acc,
-          p_descs: cost_desc,
-          hsn: hsn,
-        },
-  
-        success: function (response) { debugger
-          
-          document.getElementById("create_item").reset();
-          reloadItem();
-  
-  
-        }
-  
-      });
+  function create_item() {
 
-function reloadItem() { debugger
-  $.ajax({
-    url: "{% url 'item_dropdown' %}",
-    type: "GET",
-    dataType: "json",
-    data: $(this).serialize(),
-    csrfmiddlewaretoken: '{{ csrf_token }}',
-
-    success: function(data) {
-      var dropdown = $('items_nms');
-      dropdown.empty();
-
-      $.each(data, function(key, value) {
-        
-          dropdown.append($('<option></option>').attr('value', key).text(value[0]).val(value[1]));
-      });
-
-    },
-    error: function(xhr, status, error) {
-    console.error(xhr.responseText);
+    if (document.getElementsByName('radio1')[0].checked) {
+      var radio = document.getElementsByName('radio1')[0].value
+    } else {
+      var radio = document.getElementsByName('radio2')[0].value
     }
-  });
+
+    if (document.getElementsByName('type')[0].checked) {
+      var type = document.getElementsByName('type')[0].value
+    } else {
+      var type = document.getElementsByName('type2')[0].value
+    }
+
+    var inter = document.getElementsByName('inter')[0].value
+    var intra = document.getElementsByName('intra')[0].value
+
+    var name = document.getElementsByName('name')[0].value
+    var unit = document.getElementsByName('unit')[0].value
+    var sel_price = document.getElementsByName('sel_price')[0].value
+    var sel_acc = document.getElementsByName('sel_acc')[0].value
+    var sel_desc = document.getElementsByName('sel_desc')[0].value
+    var cost_price = document.getElementsByName('cost_price')[0].value
+    var cost_acc = document.getElementsByName('cost_acc')[0].value
+    var cost_desc = document.getElementsByName('cost_desc')[0].value
+    var hsn = document.getElementsByName('HSN')[0].value
+
+    $.ajax({
+
+      type: "GET",
+      url: "{% url 'additem_bills' %}",
+
+      data: {
+        radios: radio,
+        inters: inter,
+        intras: intra,
+        types: type,
+        names: name,
+        units: unit,
+        sel_prices: sel_price,
+        sel_accs: sel_acc,
+        s_descs: sel_desc,
+        cost_prices: cost_price,
+        cost_accs: cost_acc,
+        p_descs: cost_desc,
+        hsn: hsn,
+
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+      },
+
+      success: function (response) {
+        document.getElementById("modalItem").reset();
+         reloadItem();
+
+
+      }
+
+    });
+
+
+  }
+
+  
+function reloadItem() { 
+$.ajax({
+  url: "{% url 'item_dropdown' %}",
+  type: "GET",
+  dataType: "json",
+  data: $(this).serialize(),
+  csrfmiddlewaretoken: '{{ csrf_token }}',
+
+  success: function(data) {
+    var dropdown = $('.itemlist');
+    dropdown.empty();
+
+    $.each(data, function(key, value) {
+      
+        dropdown.append($('<option></option>').attr('value', key).text(value[0]).val(value[0]));
+    });
+
+  },
+  error: function(xhr, status, error) {
+  console.error(xhr.responseText);
+  }
+});
 }
-  
-    }
-  </script>
+</script>
 
 <script>
     function generateFullName() {
