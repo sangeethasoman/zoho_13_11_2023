@@ -424,7 +424,7 @@
             <hr class="hr">
 
 
-            <div id="Template" class=" print-only page tabcontent p-5 m-3" style="display: block; background-color:azure;" class="slip m-3 p-5  bg-light"
+            <div id="Template" class=" print-only page tabcontent p-5 m-3" style="display: block; background-color:azure;width: 100%;" class="slip m-3 p-5  bg-light"
             style="box-shadow: 5px 5px 10px rgb(45, 45, 45);"> 
                 <div class="ribbon" >{{ recur_bill.status }}</div>
                 <div class="row pt-0 m-0 text-center">
@@ -511,30 +511,30 @@
                     <table class="table ">
                         <thead style="background-color:burlywood; color: black;">
                             <tr>
-                                <td>#</td>
-                                <td>Item</td>
-                                <td>HSN</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">#</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">Item</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">HSN</td>
                                 
-                                <td>Rate</td>
-                                <td>Quantity</td>
-                                <td>Discount</td>
-                                <td>Tax</td>
-                                <td>Total</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">Rate</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">Quantity</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">Discount</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">Tax</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">Total</td>
                             </tr>
                         </thead>
                         <tbody style=":hover{color: #ddd; background-color: transparent;}">
 
                             {% for b in bill_item %}
                             <tr >
-                                <td>{{ forloop.counter }}</td>
-                                <td>{{b.item}}</td>
-                                <td>{{b.hsn}}</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{ forloop.counter }}</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{b.item}}</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{b.hsn}}</td>
                                 
-                                <td>{{b.rate}}</td>
-                                <td>{{b.quantity}}</td>
-                                <td>{{b.discount}}</td>
-                                <td>{{b.tax}} %</td>
-                                <td>{{b.amount|floatformat:2}}</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{b.rate}}</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{b.quantity}}</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{b.discount}}</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{b.tax}} %</td>
+                                <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">{{b.amount|floatformat:2}}</td>
                             </tr>
                             {% endfor %}
 
