@@ -2309,8 +2309,11 @@ select = $('#customer_sel').val();
                             $('#tax'+ind+' optgroup[label="GST"]').hide();
                            $('#tax'+ind+' optgroup[label="IGST"]').show(); 
                            a =  $('#tax'+ind+' #taxType').text()
+                           if(a.indexOf("IGST") == -1){
                            $('#tax'+ind+' #taxType').text(a +" IGST");
-                              }); 
+                           }
+                              
+                          }); 
                        }
                        isGST();
                 }
@@ -2327,12 +2330,16 @@ document.addEventListener("DOMContentLoaded", function() { debugger
                            $('#tax1 optgroup[label="GST"]').show();
                            $('#tax1 optgroup[label="IGST"]').hide(); 
                            a =  $("#taxType").text()
+                           if(a.indexOf("GST") == -1){
                            $("#taxType").text(a +" GST");
+                           }
                        } else {
                            $('#tax1 optgroup[label="GST"]').hide();
                            $('#tax1 optgroup[label="IGST"]').show();  
                            a =  $("#taxType").text()
+                           if(a.indexOf("IGST") == -1){
                            $("#taxType").text(a +" IGST");
+                           }
                        }  
                      });
     $(document).ready(function () {
@@ -2635,6 +2642,7 @@ $(document).ready(function () {
                         style='width:20px'><i class='fa fa-times'></i></button></td>
             </tr>`);
             $('#item_table').append(newRow);
+            reloadItem();
         });
 
         //Duplicate row function
@@ -2729,6 +2737,7 @@ $(document).ready(function () {
 
             $('#item_table').append(newRow);
             calc_total();
+            reloadItem();
         });
 
         // Delete row

@@ -188,6 +188,7 @@
     }
 
     .print-only {
+        
         display: none;
         height: auto;
         width: auto;
@@ -225,6 +226,7 @@
             margin: 0;
             height: auto;
         }
+        
     }
 
     .modal{
@@ -422,9 +424,9 @@
             <hr class="hr">
 
 
-            <div id="Template" class=" print-only page tabcontent p-5 m-3" style="display: block; background-color:azure" class="slip m-3 p-5  bg-light"
+            <div id="Template" class=" print-only page tabcontent p-5 m-3" style="display: block; background-color:azure;" class="slip m-3 p-5  bg-light"
             style="box-shadow: 5px 5px 10px rgb(45, 45, 45);"> 
-                <div class="ribbon">{{ recur_bill.status }}</div>
+                <div class="ribbon" >{{ recur_bill.status }}</div>
                 <div class="row pt-0 m-0 text-center">
                     <div class="col-4 "></div>
                     <div class="col-4 ">
@@ -436,7 +438,7 @@
                     <div class="col-1 "></div>
                     <div class="col-5 ">
                         <h3 class="text-uppercase" style="color: black;"><b>{{company.company_name }}</b></h3>
-                        <p class="address mx-2 p-2"> {{company.address}}<br>
+                        <p class="address mx-2 p-2" style="color: black;"> {{company.address}}<br>
                             {{company.city}} <br>
                             {{company.state}}<br>
                             {{company.pincode}}<br>
@@ -448,17 +450,17 @@
                         <section class="d-flex justify-content-between">
                             <div class="top-right">
                                 <div class="graphic-path text-center">
-                                    <h5 class="text-capitalize"  >{{recur_bill.profile_name}}</h5>
+                                    <h5 class="text-capitalize"  style="color: black;">{{recur_bill.profile_name}}</h5>
                                     <p class="text-capitalize" id="pid" hidden>{{recur_bill.id}}</p>
 
                                 </div>
                                 <div class="position-relative">
-                                    <p>Bill No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{recur_bill.bill_no}}</span></p>
-                                    <p>Bill Date&nbsp;&nbsp;<span style="color: black;">: {{recur_bill.start_date|date:'d-m-Y'}}</span></p>
+                                    <p style="color: black;">Bill No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{recur_bill.bill_no}}</span></p>
+                                    <p style="color: black;">Bill Date&nbsp;&nbsp;<span style="color: black;">: {{recur_bill.start_date|date:'d-m-Y'}}</span></p>
                                     <!-- <p>Due Date&nbsp;<span style="color: black;">: {{recur_bill.end_date|date:'d-m-Y'}}</span></p> -->
-                                    <p>Due Date&nbsp;<span style="color: black;">: {{recur_bill.end_date|date:'d-m-Y'}}</span></p>
+                                    <p style="color: black;">Due Date&nbsp;<span style="color: black;">: {{recur_bill.end_date|date:'d-m-Y'}}</span></p>
                                     <!-- <p>Term&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: NET {{recur_bill.payment_terms}}</span></p>  --> 
-                                    <p>Term&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">:  {% if recur_bill.payment_terms == "recpt" %} Due on receipt {% else %}   NET {{ recur_bill.payment_terms }} {% endif %}</span></p> 
+                                    <p style="color: black;">Term&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">:  {% if recur_bill.payment_terms == "recpt" %} Due on receipt {% else %}   NET {{ recur_bill.payment_terms }} {% endif %}</span></p> 
                                 </div>
                             </div>
                         </section>
@@ -473,9 +475,9 @@
 
                             <div class="col-1 "></div>
                             <div class="col-5">
-                                <p style=" font-size: 18px; font-style: italic; font-weight: 700;">Bill To,</p>
+                                <p style=" font-size: 18px; font-style: italic; font-weight: 700; color: black;">Bill To,</p>
                                 <h6  class="mx-3 text-capitalize" style="color: black; ">{{ vendor.salutation}} {{vendor.first_name}} {{ vendor.last_name}}</h6>
-                                <p class="address col-6 mx-4 p-2" style="margin-left: -14px;">{{vendor.baddress}}<br>
+                                <p class="address col-6 mx-4 p-2" style="margin-left: -14px; color: black;">{{vendor.baddress}}<br>
                                     {{vendor.bcity}}<br>
                                     {{vendor.bstate}}<br> 
                                 </p>
@@ -489,9 +491,9 @@
                             </div> -->
 
                             <div class="col-5">
-                                <p style=" font-size: 18px; font-style: italic; font-weight: 700;">Deliver To,</p>
+                                <p style=" font-size: 18px; font-style: italic; font-weight: 700;color: black;">Deliver To,</p>
                                 <h6  class="mx-2 text-capitalize" style="color: black;">{{customer.customerName}}</h6>
-                                <p class="address col-6 mx-3 p-2" style="margin-left: -14px;">{{customer.Address1}} <br>
+                                <p class="address col-6 mx-3 p-2" style="margin-left: -14px;color: black;">{{customer.Address1}} <br>
                                     {{customer.Address2}}<br>
                                     {{customer.city}}<br>
                                     {{customer.state}}<br>
@@ -1198,7 +1200,7 @@
 $(document).ready(function () {
         console.log('print');
 
-        $(document).on('click', '.toPDF', function (event) {debugger
+        $(document).on('click', '.toPDF', function (event) {
             console.log('print1');
             event.preventDefault();
             var element = document.getElementById('Template');
@@ -1211,11 +1213,11 @@ $(document).ready(function () {
             
             var opt =
             {
-                margin: 0,
+                margin: 1,
                 filename: 'recurring bill_'+$("#pid").text() + '.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 3 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                image: { type: 'png', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a3', orientation: 'portrait' }
             }; 
             html2pdf().set(opt).from(element).save().then((pdf) => {
                 if(overview){
@@ -1243,7 +1245,7 @@ $(document).ready(function () {
 </script> 
 
 <script>  
-    function printSection() { debugger
+    function printSection() { 
     var printContents = document.getElementById('Template').innerHTML;
     var originalContents = document.body.innerHTML;
 

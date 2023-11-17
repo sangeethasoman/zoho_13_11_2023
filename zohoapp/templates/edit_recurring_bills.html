@@ -3471,14 +3471,24 @@ function reloadItem() {
     data: $(this).serialize(),
     csrfmiddlewaretoken: '{{ csrf_token }}',
 
-    success: function(data) {
+    success: function(data) { debugger
       var dropdown = $('.item');
-      dropdown.empty();
+      //dropdown.empty();
 
-      $.each(data, function(key, value) {
+      // $.each(data, function(key, value) {
         
-          dropdown.append($('<option></option>').attr('value', key).text(value[0]).val(value[1]));
-      });
+      //     dropdown.append($('<option></option>').attr('value', key).text(value[0]).val(key));
+      // });
+
+      var keys = Object.keys(data).map(Number).sort((a, b) => a - b);
+
+      // Find the last key in the sorted array of keys
+      var lastKey = keys[keys.length - 1];
+
+      // Access the last element using the last key
+      var lastElement = data[lastKey];
+       
+      dropdown.append($('<option></option>').text(lastElement[0]).val(lastElement[1])); 
 
     },
     error: function(xhr, status, error) {
@@ -4275,4 +4285,10 @@ else{
       }
   }
 </script>
+
+<!-- <script>
+  $(document).ready(function(){
+   reloadItem();
+  });
+</script> -->
 {% endblock %}

@@ -156,10 +156,10 @@
             var opt =
             {
                 margin: 1,
-                filename: 'purchase_bill_' + '.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
+                filename: 'purchase_bill_'+$("#pid").text() + '.pdf',
+                image: { type: 'png', quality: 0.98 },
                 html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                jsPDF: { unit: 'in', format: 'a3', orientation: 'portrait' }
             };
             html2pdf().set(opt).from(element).save();
 
@@ -458,7 +458,7 @@
                             </div>
                             
                         </div>
-                        <div class="tab-pane fade  show active" id="template" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade  show active" id="template" role="tabpanel" aria-labelledby="profile-tab" style="width: 101%;">
                             <div class="slip m-3 p-5  bg-light" id="whatToPrint" 
                                 style="box-shadow: 5px 5px 10px rgb(45, 45, 45);">
                                 <div class="ribbon">{{ bill.status }}</div>
@@ -499,39 +499,41 @@
                                 <div class=" row highlight ">
                                 <div class="row" >
                                     <div class="col-md-9 mt-auto">
+                                        <p class="text-capitalize" id="pid" hidden>{{bill.id}}</p>
                                         <h6 class="text-dark">Bill To:</h6>
                                         <h6 class="text-dark">{{ bill.vendor_name }}</h6>
                                         <h6 class="text-dark">{{ bill.vendor_email }}</h6>
                                     </div>
                                     <div class="col-md-3 mt-auto" style="text-align: left;">
+                                        
                                         <h6 class="text-dark">Deliver To:</h6>
                                         <h6 class="text-dark ">{{ bill.customer_name }}</h6>
                                         <h6 class="text-dark">{{ bill.customer_email }}</h6>
                                     </div>
                                 </div>
                             </div>
-                                <table class="table mt-2" style="border-color: black;">
+                                <table class="table mt-2" style="border-color: black;width: 50%;">
                                     <thead class="bg-secondary text-white">
                                         <tr>
-                                            <th style="color: white;">#</th>
-                                            <th style="width: 30rem;color: white;">Item</th>
-                                            <th style="width: 30rem;color: white;">HSN</th>
-                                            <th style="text-align: right;color: white;">Quantity</th>
-                                            <th style="text-align: right;color: white;">Rate</th>
-                                            <th style="width: 30rem;color: white;">Discount</th>
-                                            <th style="text-align: right;color: white;">Amount</th>
+                                            <th style="text-align: right;color: black;width: 30rem;">#</th>
+                                            <th style="text-align: right;width: 30rem;color: black;">Item</th>
+                                            <th style="text-align: right;width: 30rem;color: black;">HSN</th>
+                                            <th style="text-align: right;color: black;width: 30rem;">Quantity</th>
+                                            <th style="text-align: right;color: black;width: 30rem;">Rate</th>
+                                            <th style="width: 30rem;color: black;width: 30rem; text-align: right;">Discount</th>
+                                            <th style="text-align: right;color: black;width: 30rem;">Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {% for item in items %}
                                         <tr>
-                                            <td>{{ forloop.counter }}</td>
-                                            <td>{{ item.item_name }}</td>
-                                            <td style="text-align: right;">{{ item.hsn }}</td>
-                                            <td style="text-align: right;">{{ item.quantity }}</td>
-                                            <td style="text-align: right;">{{ item.rate|floatformat:2 }}</td>
-                                            <td style="text-align: right;">{{ item.discount|floatformat:2}}</td>
-                                            <td style="text-align: right;">{{ item.amount|floatformat:2 }}</td>
+                                            <td  style="text-align: right; width:  30rem;">{{ forloop.counter }}</td>
+                                            <td  style="text-align: right; width:  30rem;">{{ item.item_name }}</td>
+                                            <td style="text-align: right; width:  30rem;">{{ item.hsn }}</td>
+                                            <td style="text-align: right; width:  30rem;">{{ item.quantity }}</td>
+                                            <td style="text-align: right; width:  30rem;">{{ item.rate|floatformat:2 }}</td>
+                                            <td style="text-align: right; width: 30rem;">{{ item.discount|floatformat:2}}</td>
+                                            <td style="text-align: right; width:  30rem;">{{ item.amount|floatformat:2 }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
