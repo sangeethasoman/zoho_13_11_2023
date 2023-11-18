@@ -5444,7 +5444,7 @@ def add_recurring_bills(request):
     purchase = Purchase.objects.all()
     sales_type = set(Sales.objects.values_list('Account_type', flat=True))
     purchase_type = set(Purchase.objects.values_list('Account_type', flat=True))
-    bank=Bankcreation.objects.all()
+    bank=Bankcreation.objects.filter(user=request.user)
     last_id = recurring_bills.objects.filter(user_id=request.user.id).order_by('-id').values('id').first()
     print(last_id)
     if last_id !=  None:
@@ -5595,7 +5595,7 @@ def edit_recurring_bills(request,id):
     recur_item = recurring_bills_items.objects.filter(user = request.user,recur_bills = id) 
     c = customer.objects.filter(user = request.user).get(id = recur_bills.customer_name.split(' ')[0])
     v = vendor_table.objects.filter(user = request.user).get(id = recur_bills.vendor_name.split(" ")[0])
-    bank=Bankcreation.objects.all()
+    bank=Bankcreation.objects.filter(user = request.user)
 
     
     context = {
@@ -10818,7 +10818,7 @@ def new_bill(request):
     account_types = Chart_of_Account.objects.values_list('account_type', flat=True).distinct()
     sales_acc = Sales.objects.all()
     pur_acc = Purchase.objects.all()
-    bank=Bankcreation.objects.all()
+    bank=Bankcreation.objects.filter(user_id=user.id)
     last_id = PurchaseBills.objects.filter(user_id=user.id).order_by('-id').values('id').first()
     if last_id:
         last_id = last_id['id']
@@ -11255,7 +11255,7 @@ def edit_bill(request,bill_id):
     account_types = Chart_of_Account.objects.values_list('account_type', flat=True).distinct()
     sales_acc = Sales.objects.all()
     pur_acc = Purchase.objects.all()
-    bank=Bankcreation.objects.all()
+    bank=Bankcreation.objects.filter(user_id=user.id)
 
     last_id = PurchaseBills.objects.filter(user_id=user.id).order_by('-id').values('id').first()
     if last_id:

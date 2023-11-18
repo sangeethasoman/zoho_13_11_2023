@@ -197,37 +197,7 @@
         box-shadow: 5px 2px 5px 2px  grey;
     }
 
-    @media print {
-        body * {
-            visibility: hidden;
-        }
-
-        header {
-            display: none;
-        }
-
-        .print-only * {
-            visibility: visible;
-        }
-
-        .print-only {
-            /* position: absolute; */
-            position: fixed;
-            left: 0;
-            top: 0;
-            right: 0;
-            height: auto;
-            page-break-before: always;
-            page-break-inside: avoid;
-        }
-
-        @page {
-            size:100%;
-            margin: 0;
-            height: auto;
-        }
-        
-    }
+   
 
     .modal{
       z-index: 9999;
@@ -289,7 +259,32 @@
         overflow: hidden;
 
     }
+    .table th, .jsgrid .jsgrid-table th, .table td, .jsgrid .jsgrid-table td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 5px !important;
+}
 
+@media print {
+    body * { 
+        display: none;
+  } 
+  #Template * {
+    visibility: visible;
+  }
+  .my-table {
+    width: 100%;
+    height: 90vh;
+    border: solid;
+    table-layout: fixed;
+  }
+  h3{
+    color: #8b3131;
+  }
+   
+}
   
 </style>
 
@@ -378,7 +373,7 @@
                         data-toggle="tooltip" title="PDF"></a>
 
                         <a href="" class=" fa fa-print btns px-2 py-2"   data-toggle="tooltip"
-                            title="PRINT" onclick="printSection()"> </a>
+                            title="PRINT" id="printClick"> </a>
 
                         <a href="" class="fa fa-envelope btns px-2 py-2" 
                             title="MAIL" data-toggle="modal" data-target="#emails" > </a>
@@ -424,7 +419,7 @@
             <hr class="hr">
 
 
-            <div id="Template" class=" print-only page tabcontent p-5 m-3" style="display: block; background-color:azure;width: 100%;" class="slip m-3 p-5  bg-light"
+            <div id="Template" class=" print-only page tabcontent p-5   m-1" style="display: block; background-color:azure;" class="slip m-3 p-5  bg-light"
             style="box-shadow: 5px 5px 10px rgb(45, 45, 45);"> 
                 <div class="ribbon" >{{ recur_bill.status }}</div>
                 <div class="row pt-0 m-0 text-center">
@@ -434,18 +429,16 @@
                     </div>
                     <div class="col-4 "></div>
                 </div>
-                <div class="row extra-info pt-2 mt-3">
-                    <div class="col-1 "></div>
-                    <div class="col-5 ">
+                <div class="row extra-info pt-2 mt-3"> 
+                    <div class="col-6 ">
                         <h3 class="text-uppercase" style="color: black;"><b>{{company.company_name }}</b></h3>
                         <p class="address mx-2 p-2" style="color: black;"> {{company.address}}<br>
                             {{company.city}} <br>
                             {{company.state}}<br>
                             {{company.pincode}}<br>
                         </p>                    
-                    </div>
-                    <div class="col-1 "></div>
-                    <div class="col-5">
+                    </div> 
+                    <div class="col-6">
                         
                         <section class="d-flex justify-content-between">
                             <div class="top-right">
@@ -471,29 +464,20 @@
 
                 <section class="store-user mt-2">
                     <div class="col-12">
-                        <div class="row pb-3">
-
-                            <div class="col-1 "></div>
-                            <div class="col-5">
+                        <div class="row pb-3"> 
+                            <div class="col-6">
                                 <p style=" font-size: 18px; font-style: italic; font-weight: 700; color: black;">Bill To,</p>
-                                <h6  class="mx-3 text-capitalize" style="color: black; ">{{ vendor.salutation}} {{vendor.first_name}} {{ vendor.last_name}}</h6>
-                                <p class="address col-6 mx-4 p-2" style="margin-left: -14px; color: black;">{{vendor.baddress}}<br>
+                                <h6 style="color: black;">{{ vendor.salutation}} {{vendor.first_name}} {{ vendor.last_name}}</h6>
+                                <p>{{vendor.baddress}}<br>
                                     {{vendor.bcity}}<br>
                                     {{vendor.bstate}}<br> 
                                 </p>
-                            </div>
-                            <div class="col-1"></div>
-                            <!-- <div class="col-5 mt-5">
-                                <p>Bill Date : &nbsp <span style="color: black;">{{recur_bill.start_date|date:'d-m-Y'}}</span></p>
-                                <p>Due Date : &nbsp <span style="color: black;">{{recur_bill.end_date|date:'d-m-Y'}}</span></p>
-                                <p>Term : &nbsp <span style="color: black;">NET {{recur_bill.payment_terms}}</span></p>
+                            </div> 
 
-                            </div> -->
-
-                            <div class="col-5">
+                            <div class="col-6">
                                 <p style=" font-size: 18px; font-style: italic; font-weight: 700;color: black;">Deliver To,</p>
-                                <h6  class="mx-2 text-capitalize" style="color: black;">{{customer.customerName}}</h6>
-                                <p class="address col-6 mx-3 p-2" style="margin-left: -14px;color: black;">{{customer.Address1}} <br>
+                                <h6 style="color: black;">{{customer.customerName}}</h6>
+                                <p>{{customer.Address1}} <br>
                                     {{customer.Address2}}<br>
                                     {{customer.city}}<br>
                                     {{customer.state}}<br>
@@ -508,7 +492,10 @@
                 </section>
 
                 <section class="product-area mt-2">
-                    <table class="table ">
+                    
+                    
+                    
+                    <table class="table my-table">
                         <thead style="background-color:burlywood; color: black;">
                             <tr>
                                 <td style="text-align: left;color: black;width: 30rem;margin-left: 2px;">#</td>
@@ -540,6 +527,8 @@
 
                         </tbody>
                     </table>
+                   
+                    
                 </section>
 
                 <section class="balance-info p-5">
@@ -577,13 +566,13 @@
                                     <td style="font-weight:bold">: {{recur_bill.tax_amount|floatformat:2}}</td>
                                 </tr>
                                 {% endif %}
-                                {% if recur_bill.shipping_charge != "" %}
+                                {% if recur_bill.shipping_charge != 0 %}
                                 <tr>
                                     <td style="font-weight:bold">Shipping Charge</td>
                                     <td style="font-weight:bold">: {{recur_bill.shipping_charge|floatformat:2}}</td>
                                 </tr>
                                 {% endif %}
-                                {% if recur_bill.adjustment != "" %}
+                                {% if recur_bill.adjustment != 0 %}
                                 <tr>
                                     <td style="font-weight:bold">Adjustment</td>
                                     <td style="font-weight:bold">: {{recur_bill.adjustment|floatformat:2}}</td>
@@ -702,7 +691,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-4 d-flex">
+                            <!-- <div class="row mb-4 d-flex">
                                 <div class="col-md-6 mt-3">
                                     <h6 class="mb-0 text-grey">Tax </h6>
                                 </div><br>
@@ -713,7 +702,7 @@
                                     <span class="text-muted">%</span><br><span style="margin-left: 55px;"></span>
                                     {% endfor %}
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row mb-4 d-flex ">
                                 <div class="col-md-6 mt-3">
                                     <h6 class="mb-0 text-grey">Source of Supply</h6>
@@ -800,16 +789,19 @@
                                 </div>
                             </div>
                             <div class="d-flex ">
+                                {% if recur_bill.shipping_charge != 0 %}
                                 <div class="col-md-6 mt-3">
-                                    <h6 style="color: #ccc;">Shipping Charge</h5><br>
+                                   <h6 style="color: #ccc;">Shipping Charge</h5><br>
                                 </div>
                                 <div class="col-md-6 mt-3 mx-3">
                                     <input type="text" value="{{ recur_bill.shipping_charge }} INR" class="amnt"
                                         style="font-size: 16px; color: azure;" readonly>
                                 </div>
+                                {% endif %}
                             </div>
 
                             <div class="d-flex ">
+                                {% if recur_bill.adjustment != 0 %}
                                 <div class="col-md-6 mt-3">
                                     <h6 style="color: #ccc;">Adjustment</h5><br>
                                 </div>
@@ -817,6 +809,7 @@
                                     <input type="text" value="{{ recur_bill.adjustment|floatformat:2 }} INR"
                                         class="amnt " style="font-size: 16px; color: azure;" readonly>
                                 </div>
+                                {% endif %}
                             </div>
 
                             <div class="d-flex ">
@@ -1245,7 +1238,9 @@ $(document).ready(function () {
 </script> 
 
 <script>  
-    function printSection() { 
+const printBtn = document.getElementById('printClick');
+printBtn.addEventListener('click',function(){
+    debugger
     var printContents = document.getElementById('Template').innerHTML;
     var originalContents = document.body.innerHTML;
 
@@ -1254,9 +1249,9 @@ $(document).ready(function () {
     window.print();
    
 
-    document.body.innerHTML = originalContents;
-    window.location.reload();
-}
+    document.body.innerHTML = originalContents; 
+})
+ 
 </script>
 
 

@@ -75,16 +75,21 @@
                 console.log(qty);
                 console.log(rate);
                 console.log(tax);
-                if(dic){
-                  $(this).find('.taxamount').val((qty * rate)-dic * (tax / 100));
-                }
-                else{
-                  $(this).find('.taxamount').val((qty * rate) * (tax / 100));
-                }
-                var taxamount = parseFloat($(this).find('.taxamount').val());
-                $(this).find('.amount').val((qty * rate)-dic);
 
-                calc_total();
+               var amount = rate*qty;
+               var tax_amount = 0;
+               if(dic){
+                amount_disc =  amount - dic;
+                $(this).find('.amount').val(amount_disc);
+                tax_amount =(amount_disc*(tax/100));
+                $(this).find('.taxamount').val(tax_amount)
+               }
+               else{
+                $(this).find('.amount').val(amount);
+                tax_amount =(amount*(tax/100));
+                $(this).find('.taxamount').val(tax_amount)
+               }
+               calc_total();
             }
         });
     }
@@ -371,20 +376,21 @@ else{
           <div class="col-5"><input type="text" class="form-control text-dark bg-light" id="cgstin_inp" name="cgstin_inp" style="width: 105%;">
 
           </div>
-          <div class="row mb-4 pt-4">
-            <div class="col-sm-2"><label for="paymentmethod">Payment Method</label></div>
-            <div class="col-sm-10"><select name="paymentmethod" id="paymentmethod" class="form-control bg-white text-dark" style="width: 53%;">
-              <option id="crt_paymt_method" value="{{bill.payment_method}}" selected>{{bill.payment_method}}</option>
-              <option value="Cash">Cash</option>
-              <option value="Cheque">Cheque</option>
-              {% for b in bank %}
-                  <option value="{{b.name}}">{{b.name}}</option>
-              {% endfor %}
-          </select>
-
-            </div>
-        </div>
+         
       </div>
+      <div class="row mb-4 pt-4">
+        <div class="col-sm-2"><label for="paymentmethod">Payment Method</label></div>
+        <div class="col-sm-10"><select name="paymentmethod" id="paymentmethod" class="form-control bg-white text-dark" style="width: 53%;">
+          <option id="crt_paymt_method" value="{{bill.payment_method}}" selected>{{bill.payment_method}}</option>
+          <option value="Cash">Cash</option>
+          <option value="Cheque">Cheque</option>
+          {% for b in bank %}
+              <option value="{{b.name}}">{{b.name}}</option>
+          {% endfor %}
+      </select>
+
+        </div>
+    </div>
           
             <div class="form-check  pt-2 pb-5">
                 <input class="form-check-input" type="checkbox" value="" id="checkbox" onchange="updateTaxHeader()">
@@ -436,7 +442,7 @@ else{
                         <td class='text-right'><input type='number' id='rate{{ forloop.counter }}' style="width: 80px;"
                                 class='bg-transparent border-0 text-black text-right rate' name='rate[]' value="{{item.rate}}">
                         </td>
-                        
+                        {{item.tax_percentage}}
                         <td class='text-right'> <select name='tax[]' id='tax{{ forloop.counter }}' style="width: 80px;"
                           class='bg-transparent border-0 text-black text-right tax'
                           onclick='handleTaxChange({{ forloop.counter }})'> 
@@ -2292,30 +2298,28 @@ select = $('#customer_sel').val();
 
                    
 
-                    if(isGST()){
-                      $('#item_table tbody tr').each(function (Value, index,){ 
+                    if(isGST()){ debugger
+                      $('#item_table tbody tr').each(function (Value, index,){ debugger
                         let ind = Value+1
                            $('#tax'+ind+' optgroup[label="GST"]').show();
                            $('#tax'+ind+' optgroup[label="IGST"]').hide();  
                            a =  $('#tax'+ind+' #taxType').text()
                            if(a.indexOf("GST") == -1){
                            $('#tax'+ind+' #taxType').text(a +" GST");
-                           }
+                           }  
                       });
 
                        } else {
-                        $('#item_table tbody tr').each(function (Value, index,){
+                        $('#item_table tbody tr').each(function (Value, index,){debugger
                           let ind = Value+1
-                            $('#tax'+ind+' optgroup[label="GST"]').hide();
-                           $('#tax'+ind+' optgroup[label="IGST"]').show(); 
+                           $('#tax'+ind+' optgroup[label="GST"]').hide();
+                          $('#tax'+ind+' optgroup[label="IGST"]').show(); 
                            a =  $('#tax'+ind+' #taxType').text()
                            if(a.indexOf("IGST") == -1){
                            $('#tax'+ind+' #taxType').text(a +" IGST");
-                           }
-                              
+                           } 
                           }); 
-                       }
-                       isGST();
+                       } 
                 }
 
             });
@@ -2339,7 +2343,7 @@ document.addEventListener("DOMContentLoaded", function() { debugger
                            a =  $("#taxType").text()
                            if(a.indexOf("IGST") == -1){
                            $("#taxType").text(a +" IGST");
-                           }
+                           } 
                        }  
                      });
     $(document).ready(function () {
@@ -2395,7 +2399,39 @@ document.addEventListener("DOMContentLoaded", function() { debugger
                 // gst or igst in tax
 
               $("#cust_state").val(response.state);
-              isGST();
+              if(isGST()){debugger
+                          //  $('#tax1 optgroup[label="GST"]').show();
+                          //  $('#tax1 optgroup[label="IGST"]').hide(); 
+                          //  a =  $("#taxType").text()
+                          //  if(a.indexOf("IGST") == -1){
+                          //  $("#taxType").text(a +" IGST");
+                          $('#item_table tbody tr').each(function (Value, index,){ debugger
+                            var tax = $(this).find('.tax').val();
+                            let ind = Value+1
+                           $('#tax'+ind+' optgroup[label="GST"]').show();
+                           $('#tax'+ind+' optgroup[label="IGST"]').hide();  
+                           a =  $('#tax'+ind+' #taxType').text() 
+                           $('#tax'+ind+' option:selected').html(tax+'% GST'); 
+                      }); 
+                      document.getElementById("tr_cgst").style.display = "table-row";
+                      document.getElementById("tr_sgst").style.display = "table-row";
+                      document.getElementById('tr_igst').style.display = "none";
+                      calc();
+                       } else {
+                        $('#item_table tbody tr').each(function (Value, index,){debugger
+                          var tax = $(this).find('.tax').val();
+                          let ind = Value+1
+                           $('#tax'+ind+' optgroup[label="GST"]').hide();
+                          $('#tax'+ind+' optgroup[label="IGST"]').show(); 
+                           a =  $('#tax'+ind+' #taxType').text() 
+                            $('#tax'+ind+' option:selected').html(tax+'% IGST'); 
+                          }); 
+
+                          document.getElementById('tr_igst').style.display = "table-row";
+                          document.getElementById("tr_cgst").style.display = "none";
+                          document.getElementById("tr_sgst").style.display = "none";
+                          calc();
+                       } 
                 
                     
 
@@ -2643,6 +2679,31 @@ $(document).ready(function () {
             </tr>`);
             $('#item_table').append(newRow);
             reloadItem();
+            if(isGST()){debugger
+                          //  $('#tax1 optgroup[label="GST"]').show();
+                          //  $('#tax1 optgroup[label="IGST"]').hide(); 
+                          //  a =  $("#taxType").text()
+                          //  if(a.indexOf("IGST") == -1){
+                          //  $("#taxType").text(a +" IGST");
+                          $('#item_table tbody tr').each(function (Value, index,){ debugger
+                            var tax = $(this).find('.tax').val();
+                            let ind = Value+1
+                           $('#tax'+ind+' optgroup[label="GST"]').show();
+                           $('#tax'+ind+' optgroup[label="IGST"]').hide();  
+                           a =  $('#tax'+ind+' #taxType').text() 
+                          $('#tax'+ind+' option:selected').html(tax+'% GST'); 
+                      }); 
+
+                       } else {
+                        $('#item_table tbody tr').each(function (Value, index,){debugger
+                          var tax = $(this).find('.tax').val();
+                          let ind = Value+1
+                           $('#tax'+ind+' optgroup[label="GST"]').hide();
+                          $('#tax'+ind+' optgroup[label="IGST"]').show(); 
+                           a =  $('#tax'+ind+' #taxType').text()
+                           $('#tax'+ind+' option:selected').html(tax+'% IGST');
+                          }); 
+                       } 
         });
 
         //Duplicate row function

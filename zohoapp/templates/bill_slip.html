@@ -139,6 +139,13 @@
         z-index: 999;
         /* Adjust the alpha value to control the opacity */
     }
+    .table th, .jsgrid .jsgrid-table th, .table td, .jsgrid .jsgrid-table td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+    line-height: 1;
+    white-space: nowrap;
+    padding: 5px !important;
+}
 
 </style>
 
@@ -435,6 +442,7 @@
                 <th style="width: 30rem;color: white;">HSN</th>
                 <th style="text-align: right;color: white; width: 30rem;">Quantity</th>
                 <th style="text-align: right;color: white; width: 30rem;">Rate</th>
+                <th style="text-align: right;color: white; width: 30rem;">Tax</th>
                 <th style="width: 30rem;color: white;">Discount</th>
                 <th style="text-align: right;color: white; width: 30rem;">Amount</th>
             </tr>
@@ -447,6 +455,7 @@
                 <td style="text-align: right; width: 1%;">{{ item.hsn }}</td>
                 <td style="text-align: right; width: 4%;">{{ item.quantity }}</td>
                 <td style="text-align: right; width: 4%;">{{ item.rate|floatformat:2 }}</td>
+                <td style="text-align: right; width: 4%;">{{ item.tax_percentage|floatformat:2 }}</td>
                 <td style="text-align: right; width: 1%;">{{ item.discount|floatformat:2}}</td>
                 <td style="text-align: right; width: 4%;">{{ item.amount|floatformat:2 }}</td>
             </tr>
@@ -512,7 +521,10 @@
                                     </div>
                                 </div>
                             </div>
+                            <section>
+                            <div class="row" >
                                 <table class="table mt-2" style="border-color: black;">
+                                    
                                     <thead class="bg-secondary text-white">
                                         <tr>
                                             <th style="text-align: left;color: black;width: 30rem;">#</th>
@@ -520,6 +532,7 @@
                                             <th style="text-align: left;width: 30rem;color: black;">HSN</th>
                                             <th style="text-align: left;color: black;width: 30rem;">Quantity</th>
                                             <th style="text-align: left;color: black;width: 30rem;">Rate</th>
+                                            <th style="text-align: left;color: black;width: 30rem;">Tax</th>
                                             <th style="width: 30rem;color: black;width: 30rem; text-align: left;">Discount</th>
                                             <th style="text-align: left;color: black;width: 30rem;">Amount</th>
                                         </tr>
@@ -532,12 +545,14 @@
                                             <td style="text-align: left; width:  30rem;">{{ item.hsn }}</td>
                                             <td style="text-align: left; width:  30rem;">{{ item.quantity }}</td>
                                             <td style="text-align: left; width:  30rem;">{{ item.rate|floatformat:2 }}</td>
+                                            <td style="text-align: left; width:  30rem;">{{ item.tax_percentage|floatformat:2 }}</td>
                                             <td style="text-align: left; width: 30rem;">{{ item.discount|floatformat:2}}</td>
                                             <td style="text-align: left; width:  30rem;">{{ item.amount|floatformat:2 }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
                                 </table>
+                           
                                 <table class="table border-0">
                                     <tr class="border-0" style="text-align: right;">
 
@@ -577,6 +592,13 @@
                                         <td class="text-right">{{ bill.shipping_charge|floatformat:2}}</td>
                                     </tr>
                                     {% endif %}
+                                    {% if bill.adjustment != 0 %}
+                                    <tr style="text-align: right;">
+
+                                        <td class="text-right">Adjustment:</td>
+                                        <td class="text-right">{{ bill.adjustment|floatformat:2}}</td>
+                                    </tr>
+                                    {% endif %}
                                     <!-- {% if bill.discount != 0 %}
                                     <tr style="text-align: right;">
 
@@ -601,7 +623,8 @@
                                     </tr> -->
 
                                 </table>
-
+                            </div>
+                        </section>
 
                             </div>
                         </div>

@@ -483,7 +483,7 @@
             </div>
             <div class="col-sm-3 mt-2"></div>
             <div class="col-sm-4 mt-2">
-              <input type="number" step="any" name='subtotal' placeholder=0 value="{{recur_bills.sub_total}}" step="0.00" min="0"
+              <input type="number" step="any" name='subtotal' placeholder=0 value="{{recur_bills.sub_total|floatformat:2}}" step="0.00" min="0"
                 class="form-control text-dark bg-light" id="subtotal" readonly style="background-color: #2A3038;border: 1px solid #2c2e33;">
             </div>
           </div>
@@ -513,7 +513,7 @@
           <div class="row container-fluid p-2 m-0" id="tax_amount">
             <div class="col-sm-5 mt-2"><label for="a" class="text-center">Tax Amount</label></div>
             <div class="col-sm-3 mt-2"></div>
-            <div class="col-sm-4 mt-2"><input type="number" id="total_taxamount" readonly name="total_taxamount"step="0.00" min="0" placeholder=0 value="{{recur_bills.tax_amount}}"
+            <div class="col-sm-4 mt-2"><input type="number" id="total_taxamount" readonly name="total_taxamount"step="0.00" min="0" placeholder=0 value="{{recur_bills.tax_amount|floatformat:2}}"
                 class="total_taxamount form-control text-dark bg-light"  style="background-color: #2A3038;border: 1px solid #2c2e33;"/>
             </div>
           </div>
@@ -525,7 +525,7 @@
             <div class="col-sm-3 mt-2">
             </div>
             <div class="col-sm-4 mt-2">
-              <input type="number" name='addcharge' step="any" id="addcharge" placeholder=0 value="{{recur_bills.shipping_charge}}" step="0.00" min="0"
+              <input type="number" name='addcharge' step="any" id="addcharge" placeholder=0 value="{{recur_bills.shipping_charge|floatformat:2}}" step="0.00" 
               class="form-control text-dark bg-light"/>
             </div>
           </div>
@@ -535,7 +535,7 @@
             <div class="col-sm-3 mt-2">
             </div>
             <div class="col-sm-4 mt-2">
-              <input type="number" name='add_round_off' step="any" id="add_round_off" placeholder=0 value="{{recur_bills.adjustment}}" step="0.00" min="0" class="form-control text-dark bg-light">
+              <input type="number" name='add_round_off' step="any" id="add_round_off" placeholder=0 value="{{recur_bills.adjustment|floatformat:2}}" step="0.00"  class="form-control text-dark bg-light">
             </div>
           </div><hr>
                  
@@ -543,14 +543,14 @@
             <div class="col-sm-5 mt-2"><label for="a" class="text-center " id="grandtotallbl">Grand Total</label></div>
             <div class="col-sm-2 mt-2"></div>
             <div class="col-sm-5 mt-2"><input type="number" name='grand_total' id="grandtotal" placeholder="0" tep="0.00" min="0" 
-                value="{{recur_bills.grand_total}}"class="form-control text-dark bg-light" readonly>
+                value="{{recur_bills.grand_total|floatformat:2}}"class="form-control text-dark bg-light" readonly>
             </div>
           </div>
 
           <div class="row container-fluid  p-2 m-0">
             <div class="col-sm-5 mt-2"><label for="a" class="text-center" id="Paid">Paid</label></div>
             <div class="col-sm-2 mt-2"></div>
-            <div class="col-sm-5 mt-2"><input type="number" name='amtPaid' id="amtPaid" placeholder="0" step="0.00" min="0"  value="{{recur_bills.amt_paid}}"
+            <div class="col-sm-5 mt-2"><input type="number" name='amtPaid' id="amtPaid" placeholder="0" step="0.00" min="0"  value="{{recur_bills.amt_paid|floatformat:2}}"
                 class="form-control text-dark bg-light">
             </div>
           </div>
