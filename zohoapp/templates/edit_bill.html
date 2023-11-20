@@ -442,7 +442,7 @@ else{
                         <td class='text-right'><input type='number' id='rate{{ forloop.counter }}' style="width: 80px;"
                                 class='bg-transparent border-0 text-black text-right rate' name='rate[]' value="{{item.rate}}">
                         </td>
-                        {{item.tax_percentage}}
+                        
                         <td class='text-right'> <select name='tax[]' id='tax{{ forloop.counter }}' style="width: 80px;"
                           class='bg-transparent border-0 text-black text-right tax'
                           onclick='handleTaxChange({{ forloop.counter }})'> 

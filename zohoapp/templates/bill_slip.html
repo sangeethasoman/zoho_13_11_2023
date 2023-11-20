@@ -147,6 +147,21 @@
     padding: 5px !important;
 }
 
+@media print {
+        body * {
+            visibility: hidden;
+        }
+
+        header {
+            display: none;
+        }
+
+        .print-only  * {
+            visibility: visible;
+            display: block; 
+        }
+
+}
 </style>
 
 
@@ -332,7 +347,7 @@
             </div>
         </div>
 
-        <div class="my-4  " style="background-color: rgba(252, 236, 217, 0.8); width: 107%;">
+        <div class="my-4  " style="background-color: rgba(252, 236, 217, 0.8);">
             
             <div class="row my-3">
                 <div class="col-lg-12">
@@ -370,7 +385,7 @@
                                     </div>
                                 
                                         
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 ">
                                                 <h6 class="p-2">: {{ bill.bill_no }}</h6>  
                                                 <h6 class="p-2">: {{ bill.order_number }}</h6>
                                                 <h6 class="p-2">: {{ bill.sub_total|floatformat:2}}</h6>
@@ -403,7 +418,7 @@
                                     <div class=" rounded m-2" style="background-color: #555;">
                                         
                                         <div class="row">
-                                            <div class="col-md-5">
+                                            <div class="col-md-6">
                                                 <h6 class="p-2" for="">Vendor Name</h6> 
                                                 <h6 class="p-2" for="">Vendor Email</h6> 
                                                 <h6 class="p-2" for="">Customer Name</h6>
@@ -415,7 +430,7 @@
                                                 <h6 class="p-2" for="">Payment Terms</h6>
                                                 
                                             </div>
-                                            <div class="col-md-7">
+                                            <div class="col-md-6">
                                                 <h6 class="p-2" for="">: {{ bill.vendor_name }}</h6> 
                                                 <h6 class="p-2" for="">: {{ bill.vendor_email }}</h6> 
                                                 <h6 class="p-2" for="">: {{ bill.customer_name }}</h6>
@@ -450,14 +465,14 @@
         <tbody>
             {% for item in items %}
             <tr>
-                <td style="text-align: left; width: 4%;">{{ forloop.counter }}</td>
-                <td style="text-align: left; width: 4%;">{{ item.item_name }}</td>
-                <td style="text-align: right; width: 1%;">{{ item.hsn }}</td>
-                <td style="text-align: right; width: 4%;">{{ item.quantity }}</td>
-                <td style="text-align: right; width: 4%;">{{ item.rate|floatformat:2 }}</td>
-                <td style="text-align: right; width: 4%;">{{ item.tax_percentage|floatformat:2 }}</td>
-                <td style="text-align: right; width: 1%;">{{ item.discount|floatformat:2}}</td>
-                <td style="text-align: right; width: 4%;">{{ item.amount|floatformat:2 }}</td>
+                <td style="text-align: left; width: 4%; ">{{ forloop.counter }}</td>
+                <td style="text-align: left; width: 4%; ">{{ item.item_name }}</td>
+                <td style="text-align: right; width: 4%; ">{{ item.hsn }}</td>
+                <td style="text-align: right; width: 4%; ">{{ item.quantity }}</td>
+                <td style="text-align: right; width: 4%; ">{{ item.rate|floatformat:2 }}</td>
+                <td style="text-align: right; width: 4%; ">{{ item.tax_percentage|floatformat:2 }}</td>
+                <td style="text-align: right; width: 4%;">{{ item.discount|floatformat:2}}</td>
+                <td style="text-align: right; width: 4%; ">{{ item.amount|floatformat:2 }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -469,7 +484,7 @@
                         </div>
                         <div class="tab-pane fade  show active" id="template" role="tabpanel" aria-labelledby="profile-tab" style="width: 101%;">
                             <div class="slip m-3 p-5  bg-light" id="whatToPrint" 
-                                style="box-shadow: 5px 5px 10px rgb(45, 45, 45);">
+                                style="box-shadow: 5px 5px 10px rgb(45, 45, 45); size: A4;">
                                 <div class="ribbon">{{ bill.status }}</div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -553,7 +568,7 @@
                                     </tbody>
                                 </table>
                            
-                                <table class="table border-0">
+                                <table class="table border-0 ">
                                     <tr class="border-0" style="text-align: right;">
 
                                         <td class="text-right">Sub-Total:</td>
@@ -599,28 +614,13 @@
                                         <td class="text-right">{{ bill.adjustment|floatformat:2}}</td>
                                     </tr>
                                     {% endif %}
-                                    <!-- {% if bill.discount != 0 %}
-                                    <tr style="text-align: right;">
-
-                                        <td class="text-right">Discount:</td>
-                                        <td class="text-right">{{ bill.discount|floatformat:2}}</td>
-                                    </tr>
-                                    {% endif %} -->
+                                    
                                     <tr style="text-align: right;">
 
                                         <td class="text-right text-dark">Total:</td>
                                         <td class="text-right text-dark">{{ bill.total|floatformat:2}}</td>
                                     </tr>
-                                    <!-- <tr style="text-align: right;">
-
-                                        <td class="text-right text-dark">Paid:</td>
-                                        <td class="text-right text-dark">{{ bill.amt_paid|floatformat:2}}</td>
-                                    </tr>
-                                    <tr style="text-align: right;">
-
-                                        <td class="text-right text-dark">Balance:</td>
-                                        <td class="text-right text-dark">{{ bill.balance|floatformat:2}}</td>
-                                    </tr> -->
+                                 
 
                                 </table>
                             </div>

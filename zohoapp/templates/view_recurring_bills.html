@@ -9,6 +9,7 @@
 </body>
 
 <style>
+
    .store-user {
     background-color: #ffffcc; /* This sets the background color to a light yellow */
     border: 1px solid #ffcc00; /* This sets a border with a yellow color */
@@ -419,7 +420,7 @@
             <hr class="hr">
 
 
-            <div id="Template" class=" print-only page tabcontent p-5   m-1" style="display: block; background-color:azure;" class="slip m-3 p-5  bg-light"
+            <div id="Template" class=" print-only page print tabcontent p-5   m-1" style="display: block; background-color:azure; size: A4;" class="slip m-3 p-5  bg-light"
             style="box-shadow: 5px 5px 10px rgb(45, 45, 45);"> 
                 <div class="ribbon" >{{ recur_bill.status }}</div>
                 <div class="row pt-0 m-0 text-center">
@@ -468,7 +469,7 @@
                             <div class="col-6">
                                 <p style=" font-size: 18px; font-style: italic; font-weight: 700; color: black;">Bill To,</p>
                                 <h6 style="color: black;">{{ vendor.salutation}} {{vendor.first_name}} {{ vendor.last_name}}</h6>
-                                <p>{{vendor.baddress}}<br>
+                                <p style="color: black;">{{vendor.baddress}}<br>
                                     {{vendor.bcity}}<br>
                                     {{vendor.bstate}}<br> 
                                 </p>
@@ -477,7 +478,7 @@
                             <div class="col-6">
                                 <p style=" font-size: 18px; font-style: italic; font-weight: 700;color: black;">Deliver To,</p>
                                 <h6 style="color: black;">{{customer.customerName}}</h6>
-                                <p>{{customer.Address1}} <br>
+                                <p style="color: black;">{{customer.Address1}} <br>
                                     {{customer.Address2}}<br>
                                     {{customer.city}}<br>
                                     {{customer.state}}<br>
@@ -539,49 +540,49 @@
                         <div class="col-6">
                             <table class="table border-0">
                                 <tr>
-                                    <td style="font-weight:bold">Sub Total</td>
-                                    <td style="font-weight:bold">: {{recur_bill.sub_total|floatformat:2}}</td>
+                                    <td style="color: black;">Sub Total</td>
+                                    <td style="color: black;">: {{recur_bill.sub_total|floatformat:2}}</td>
                                 </tr>
                                 {% if gst_or_igst != "GST" %}
                                 <tr>
-                                    <td style="font-weight:bold">IGST</td>
-                                    <td style="font-weight:bold">{% if recur_bill.igst == None %} 0 {% else %} : {{recur_bill.igst|floatformat:2}} {% endif %}</td>
+                                    <td style="color: black;">IGST</td>
+                                    <td style="color: black;">{% if recur_bill.igst == None %} 0 {% else %} : {{recur_bill.igst|floatformat:2}} {% endif %}</td>
                                 </tr>
                                 {% endif %}
                                 {% if gst_or_igst == "GST" %}
                                 <tr>
-                                    <td style="font-weight:bold">CGST</td>
-                                    <td style="font-weight:bold">{% if recur_bill.cgst == None %} 0 {% else %} : {{recur_bill.cgst|floatformat:2}} {% endif %}</td>
+                                    <td style="color: black;">CGST</td>
+                                    <td style="color: black;">{% if recur_bill.cgst == None %} 0 {% else %} : {{recur_bill.cgst|floatformat:2}} {% endif %}</td>
                                 </tr>
                                 {% endif %}
                                 {% if gst_or_igst == "GST" %}
                                 <tr>
-                                    <td style="font-weight:bold">SGST</td>
-                                    <td style="font-weight:bold">{% if recur_bill.sgst == None %} 0 {% else %} : {{recur_bill.sgst|floatformat:2}} {% endif %}</td>
+                                    <td style="color: black;">SGST</td>
+                                    <td style="color: black;">{% if recur_bill.sgst == None %} 0 {% else %} : {{recur_bill.sgst|floatformat:2}} {% endif %}</td>
                                 </tr>
                                 {% endif %}
                                 {% if recur_bill.tax_amount != "" %}
                                 <tr>
-                                    <td style="font-weight:bold">Tax Amount</td>
-                                    <td style="font-weight:bold">: {{recur_bill.tax_amount|floatformat:2}}</td>
+                                    <td style="color: black;">Tax Amount</td>
+                                    <td style="color: black;">: {{recur_bill.tax_amount|floatformat:2}}</td>
                                 </tr>
                                 {% endif %}
                                 {% if recur_bill.shipping_charge != 0 %}
                                 <tr>
-                                    <td style="font-weight:bold">Shipping Charge</td>
-                                    <td style="font-weight:bold">: {{recur_bill.shipping_charge|floatformat:2}}</td>
+                                    <td style="color: black;">Shipping Charge</td>
+                                    <td style="color: black;">: {{recur_bill.shipping_charge|floatformat:2}}</td>
                                 </tr>
                                 {% endif %}
                                 {% if recur_bill.adjustment != 0 %}
                                 <tr>
-                                    <td style="font-weight:bold">Adjustment</td>
-                                    <td style="font-weight:bold">: {{recur_bill.adjustment|floatformat:2}}</td>
+                                    <td style="color: black;">Adjustment</td>
+                                    <td style="color: black;">: {{recur_bill.adjustment|floatformat:2}}</td>
                                 </tr>
                                 {% endif %}
                                 <tfoot>
                                     <tr>
-                                        <td style="font-weight:bold">Total</td>
-                                        <td style="font-weight:bold ;">: {{recur_bill.grand_total|floatformat:2}}</td>
+                                        <td style="color: black;">Total</td>
+                                        <td style="color: black;">: {{recur_bill.grand_total|floatformat:2}}</td>
                                     </tr>
                                 
                                 

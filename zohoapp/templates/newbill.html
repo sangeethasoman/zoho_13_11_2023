@@ -364,8 +364,8 @@ debugger
                 <thead>
                     <tr>
                         <th style="width: 200px;">Item Details <a href="" data-toggle="modal" data-target="#create_item" style="text-decoration: none;">
-                          <i class="fas fa-plus p-2 rounded"style="color: white; background-color: rgb(210, 132, 30);"></i></a></th>
-                          <th class="text-center text-uppercase">HSN </th>
+                          <i class="fas fa-plus p-2 rounded text-right"style="color: white; background-color: rgb(210, 132, 30);"></i></a></th>
+                          <th class=" text-right">HSN </th>
 
                         <!-- <th style="width: 250px;">Account<a href="" data-toggle="modal" data-target="#create_account" style="text-decoration: none;">
                           <i class="fas fa-plus p-2 rounded"style="color: white; background-color: rgb(210, 132, 30);"></i></a></th> -->
@@ -380,7 +380,7 @@ debugger
                 <tbody>
 
                     <tr id='row1'>
-                        <td>
+                        <td class='text-right'>
                             <div class='form-group'><select
                                     class='form-control bg-transparent text-black border-0 item_select itme itemlist'
                                     name='item[]' id='item1'>
@@ -391,207 +391,10 @@ debugger
                                     {% endfor %}
                                 </select></div>
                         </td>
-                        <td  style="width: 50%;">
+                        <td class='text-right' style="width: 50%;">
                           <input type="text" value="0" name='HSN[]' id="HSN1" style="width: 52px;" placeholder='HSN' class='bg-transparent border-0 text-black text-right HSN'  />
                         </td>
-                        <!-- <td>
-                            <div class='form-group'>
-                                <select class='form-control bg-transparent text-black border-0 account '
-                                    name='account[]' id='account1'>
-                                    <option class='text-dark'>Select Account</option>
-                                    <option id="crt_acc" ></option>
-                                    
-                                    <optgroup class=""label="Accounts Payable">
-                                      <option value='Accounts Payable' >Accounts Payable</option>
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Accounts Payable" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                    </optgroup>
-                
-                                    <optgroup class="" label="Accounts Receivable">
-                                      <option value='Accounts Receivable'>Accounts Receivable</option>
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Accounts Receivable" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Other Current Asset">
-                                      <option value='Advance Tax'>Advance Tax</option>
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Other Current Asset" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Employee Advance'>Employee Advance</option>
-                                      <option value='Prepaid Expences'>Prepaid Expences</option>
-                                      <option value='GST TCS Receivable'>GST TCS Receivable</option>
-                                      <option value='GST TDS Receivable'>GST TDS Receivable</option>
-                                      <option value='Input Tax Credits'>Input Tax Credits</option>
-                                      <option value='Input CGST'>Input CGST</option>
-                                      <option value='Input IGST'>Input IGST</option>
-                                      <option value='Input SGST'>Input SGST</option>
-                                      <option value='Reverse Charge Input Tax but not Due'>Reverse Charge Input Tax but not Due</option>
-                                      <option value='Sales to Customers(Cash)'>Sales to Customers(Cash)</option>
-                                      <option value='TDS Receivable'>TDS Receivable</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Expence">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Expence" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Advertising and Marketing'>Advertising and Marketing</option>
-                                      <option value='Automobile Expense'>Automobile Expense</option>
-                                      <option value='Bad Debt'>Bad Debt</option>
-                                      <option value='Bank Fees and Charges'>Bank Fees and Charges</option>
-                                      <option value='Consultant Expense'>Consultant Expense</option>
-                                      <option value='Credit Card Expense'>Credit Card Expense</option>
-                                      <option value='IT and Internet Expenses'>IT and Internet Expenses</option>
-                                      <option value='Janitorial Expences'>Janitorial Expences</option>
-                                      <option value='Lodging'>Lodging</option>
-                                      <option value='Meals and Entertainment'>Meals and Entertainment</option>
-                                      <option value='Office Supplies'>Office Supplies</option>
-                                      <option value=0>Other Expenses</option>
-                                      <option value='Other Expenses'>Postage</option>
-                                      <option value='Printing and Stationery'>Printing and Stationery</option>
-                                      <option value='Rent Expense'>Rent Expense</option>
-                                      <option value='Repair and Maintenance'>Repair and Maintenance</option>
-                                      <option value='Salaries and Employee Wages'>Salaries and Employee Wages</option>
-                                      <option value='Telephone Expense'>Telephone Expense</option>
-                                      <option value='Travel Expense'>Travel Expense</option>
-                                      <option value='Uncategorized'>Uncategorized</option>
-                                      <option value='Contract Assets'>Contract Assets</option>
-                                      <option value='Depreciation and Amortisation'>Depreciation and Amortisation</option>
-                                      <option value='Merchandise'>Merchandise</option>
-                                      <option value='Raw Materials and Consumables'>Raw Materials and Consumables</option>
-                                      <option value='Transpotaion Expense'>Transpotaion Expense</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Cost of Goods Sold">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Cost of Goods Sold" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Cost of Goods Sold'>Cost of Goods Sold</option>
-                                      <option value='Job Costing'>Job Costing</option>
-                                      <option value='Labor'>Labor</option>
-                                      <option value='Materials'>Materials</option>
-                                      <option value='Subcontractor'>Subcontractor</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Income">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Income" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Discount'>Discount</option>
-                                      <option value='General Income'>General Income</option>
-                                      <option value='Interest Income'>Interest Income</option>
-                                      <option value='Late Fee Income'>Late Fee Income</option>
-                                      <option value='Other Charges'>Other Charges</option>
-                                      <option value='Sales'>Sales</option>
-                                      <option value='Shipping Charge'>Shipping Charge</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Equity">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Equity" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Drawings'>Drawings</option>
-                                      <option value='Opening Balance Offset'>Opening Balance Offset</option>
-                                      <option value="Owner's Equity">Owner's Equity</option>
-                                      <option value='Retained Earnings'>Retained Earnings</option>
-                                      <option value='Capital Stock'>Capital Stock</option>
-                                      <option value='Distributions'>Distributions</option>
-                                      <option value='Dividends Paid'>Dividends Paid</option>
-                                      <option value='Investments'>Investments</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Other Current Liability">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Other Current Liability" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Employee Reimbursements'>Employee Reimbursements</option>
-                                      <option value='Opening Balance Adjustments'>Opening Balance Adjustments</option>
-                                      <option value='Tax Payable'>Tax Payable</option>
-                                      <option value='Unearned Revenue'>Unearned Revenue</option>
-                                      <option value='GST Payable'>GST Payable</option>
-                                      <option value='Output CGST'>Output CGST</option>
-                                      <option value='Output IGST'>Output IGST</option>
-                                      <option value='Output SGST'>Output SGST</option>
-                                      <option value='TDS Payable'>TDS Payable</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Other Expense">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Other Expense" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Exchange Gain or Loss'>Exchange Gain or Loss</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Fixed Asset">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Fixed Asset" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Furniture and Equipment'>Furniture and Equipment</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Stock">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Stock" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Inventory Asset'>Inventory Asset</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Cash">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Cash" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Petty Cash'>Petty Cash</option>
-                                      <option value='Undeposited Funds'>Undeposited Funds</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Other Liability">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Other Liability" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Tag Adjustments'>Tag Adjustments</option>
-                                    </optgroup>
-              
-                                    <optgroup class="" label="Long Term Liability">
-                                      {% for ac in acc %}
-                                      {% if ac.account_type == "Long Term Liability" %}
-                                      <option value="{{ac.account_name}}">{{ac.account_name}}</option>
-                                      {% endif %}
-                                      {% endfor %}
-                                      <option value='Construction Loans'>Construction Loans</option>
-                                      <option value='Mortgages'>Mortgages</option>
-                                    </optgroup>
-
-                                </select>
-                            </div>
-                        </td> -->
+          
                         <td class='text-right'><input type='number' id='qty1' style="width: 50px;"
                                 class='bg-transparent border-0 text-black text-right qty' name='quantity[]' value='0'>
                         </td>
@@ -2569,7 +2372,7 @@ debugger
             // console.log(RowCount);
             var newRow = $(`
             <tr id='row${RowCount}' >
-                <td>
+                <td class='text-right'>
                     <div class='form-group'>
                         <select
                             class='form-control bg-transparent text-black border-0 item_select itemlist' name='item[]'
@@ -2581,7 +2384,7 @@ debugger
                             {% endfor %}
                         </select></div>
                 </td>
-                <td style="width: 50%;">
+                <td class='text-right' style="width: 50%;">
                   <input type='number' id='HSN${RowCount}'
                    class='bg-transparent border-0 text-black text-right HSN' name='HSN[]' value='0' min="0" style="width: 70px;">
                 </td>
@@ -2661,7 +2464,7 @@ debugger
 
             var newRow = $(`
             <tr id='row${RowCount}' >
-                <td>
+                <td class='text-right'>
                     <div class='form-group'>
                         <select
                             class='form-control bg-transparent text-black border-0 item_select' name='item[]'
@@ -2672,7 +2475,7 @@ debugger
                             {% endfor %}
                         </select></div>
                 </td>
-                <td style="width: 50%;">
+                <td class='text-right' style="width: 50%;">
                   
                   <input type='number' id='HSN${RowCount}' value="${currentHSN}"
                         class='bg-transparent border-0 text-black text-right HSN' name='HSN[]' style="width: 70px;" value='0' min="0">
