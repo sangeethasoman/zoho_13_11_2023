@@ -269,25 +269,23 @@
 }
 
 @media print {
-    body * { 
-        display: none;
-  } 
-  #Template * {
-    visibility: visible;
-  }
-  .my-table {
-    width: 100%;
-    height: 90vh;
-    border: solid;
-    table-layout: fixed;
-  }
-  h3{
-    color: #8b3131;
-  }
-   
+        body * {
+            visibility: hidden;
+        }
+
+        header {
+            display: none;
+        }
+
+        .print-only  * {
+            visibility: visible;
+            display: block; 
+        }
+
 }
-  
+ 
 </style>
+ 
 
 <div class="container-fulid containerprof"> 
     <div id="details-list" class="vh-100 col-lg-6">
@@ -420,7 +418,7 @@
             <hr class="hr">
 
 
-            <div id="Template" class=" print-only page print tabcontent p-5   m-1" style="display: block; background-color:azure; size: A4;" class="slip m-3 p-5  bg-light"
+            <div id="Template" class=" print-only page print print-style tabcontent p-5   m-1 " style="display: block; background-color:azure; size: A4;" class="slip m-3 p-5  bg-light"
             style="box-shadow: 5px 5px 10px rgb(45, 45, 45);"> 
                 <div class="ribbon" >{{ recur_bill.status }}</div>
                 <div class="row pt-0 m-0 text-center">
@@ -455,6 +453,8 @@
                                     <p style="color: black;">Due Date&nbsp;<span style="color: black;">: {{recur_bill.end_date|date:'d-m-Y'}}</span></p>
                                     <!-- <p>Term&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: NET {{recur_bill.payment_terms}}</span></p>  --> 
                                     <p style="color: black;">Term&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">:  {% if recur_bill.payment_terms == "recpt" %} Due on receipt {% else %}   NET {{ recur_bill.payment_terms }} {% endif %}</span></p> 
+                                    <p class="text-dark " style="color: black;">Repeat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{ recur_bill.repeat_every }}</span></p> 
+                                    <p class="text-dark " style="color: black;">Method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{ recur_bill.payment_method }}</span></p>
                                 </div>
                             </div>
                         </section>

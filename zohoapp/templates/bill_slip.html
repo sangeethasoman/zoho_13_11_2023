@@ -482,7 +482,7 @@
                             </div>
                             
                         </div>
-                        <div class="tab-pane fade  show active" id="template" role="tabpanel" aria-labelledby="profile-tab" style="width: 101%;">
+                        <div class="tab-pane fade  show active" id="template" role="tabpanel" aria-labelledby="profile-tab">
                             <div class="slip m-3 p-5  bg-light" id="whatToPrint" 
                                 style="box-shadow: 5px 5px 10px rgb(45, 45, 45); size: A4;">
                                 <div class="ribbon">{{ bill.status }}</div>
@@ -495,7 +495,7 @@
                                         <h6 class="text-dark">{{ company.city }},{{ company.state }}</h6>
                                     </div>
                                 </div>
-                                <div class="row ">
+                                <!-- <div class="row ">
                                    
                                     <div class="col-md-12 " style="text-align: right;">
                                         <div class="row">
@@ -518,9 +518,38 @@
                                         </div>
                                     </div>
                                     
+                                </div> -->
+
+                                <div class="row extra-info pt-2 mt-3"> 
+                                    <div class="col-6 ">
+                                                           
+                                    </div> 
+                                    <div class="col-6">
+                                        
+                                        <section class="d-flex justify-content-between">
+                                            <div class="top-right">
+                                                <div class="graphic-path text-center">
+                                                   
+                                                </div>
+                                                <div class="position-relative">
+                                                    <p class="text-dark " style="color: black;">BILL Number&nbsp;&nbsp;<span style="color: black;">: {{bill.bill_no}}</span></p>
+                                                    <p class="text-dark " style="color: black;">Order Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{ bill.bill_date|date:'d/m/Y' }}</span></p>
+                                                    <!-- <p>Due Date&nbsp;<span style="color: black;">: {{recur_bill.end_date|date:'d-m-Y'}}</span></p> -->
+                                                    <p class="text-dark " style="color: black;">Expiry Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{bill.due_date|date:'d/m/Y'}}</span></p>
+                                                    <!-- <p>Term&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: NET {{recur_bill.payment_terms}}</span></p>  --> 
+                                                    <p class="text-dark " style="color: black;">Pay Term&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">:  {% if bill.payment_terms == "recpt" %} Due on receipt {% else %}   NET {{ bill.payment_terms }} {% endif %}</span></p>
+                                                    <p class="text-dark " style="color: black;">Repeat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{ bill.repeat_every }}</span></p> 
+                                                    <p class="text-dark " style="color: black;">Method&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: black;">: {{ bill.payment_method }}</span></p>
+                                                </div>
+                                            </div>
+                                        </section>
+                
+                                    </div>
                                 </div>
+                
+                
                                 <hr>
-                                <div class=" row highlight ">
+                                <!-- <div class=" row highlight ">
                                 <div class="row" >
                                     <div class="col-md-9 mt-auto">
                                         <p class="text-capitalize" id="pid" hidden>{{bill.id}}</p>
@@ -535,7 +564,32 @@
                                         <h6 class="text-dark">{{ bill.customer_email }}</h6>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+                            <section class="store-user mt-2 row highlight">
+                                <div class="col-12">
+                                    <div class="row pb-3"> 
+                                        <div class="col-6">
+                                            <p style=" font-size: 18px; font-style: italic; font-weight: 700; color: black;">Bill To,</p>
+                                            <h6 style="color: black;">{{ bill.vendor_name }}</h6>
+                                            <p style="color: black;">{{ bill.vendor_email }}<br>
+                                                
+                                            </p>
+                                        </div> 
+            
+                                        <div class="col-6">
+                                            <p style=" font-size: 18px; font-style: italic; font-weight: 700;color: black;">Deliver To,</p>
+                                            <h6 style="color: black;">{{ bill.customer_name }}</h6>
+                                            <p style="color: black;">{{ bill.customer_email }} <br>
+                                                
+            
+                                                
+                                            </p>
+            
+                                        </div>
+                                    </div>
+            
+                                </div>
+                            </section>
                             <section>
                             <div class="row" >
                                 <table class="table mt-2" style="border-color: black;">

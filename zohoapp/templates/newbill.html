@@ -2245,7 +2245,9 @@ debugger
                     let inx = index+1;
                            $('#tax'+inx+' optgroup[label="GST"]').show();
                            $('#tax'+inx+' optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax'+inx+' option:selected').html('0% GST');
+                           }
                   })
                        } else {
 
@@ -2254,7 +2256,10 @@ debugger
                            let inx = index+1;
                            $('#tax'+inx+' optgroup[label="GST"]').hide();
                            $('#tax'+inx+' optgroup[label="IGST"]').show();
+                           var check = $('#tax'+inx+' option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax'+inx+' option:selected').html('0% IGST')
+                           }
                            
                   })
                        }
@@ -3520,11 +3525,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax1 optgroup[label="GST"]').show();
                            $('#tax1 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax1 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax1 optgroup[label="GST"]').hide();
                            $('#tax1 optgroup[label="IGST"]').show();
+                           var check = $('#tax1 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax1 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3560,11 +3570,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax2 optgroup[label="GST"]').show();
                            $('#tax2 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax2 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax2 optgroup[label="GST"]').hide();
                            $('#tax2 optgroup[label="IGST"]').show();
+                           var check = $('#tax2 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax2 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3599,11 +3614,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax3 optgroup[label="GST"]').show();
                            $('#tax3 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax3 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax3 optgroup[label="GST"]').hide();
                            $('#tax3 optgroup[label="IGST"]').show();
+                           var check = $('#tax3 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax3 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3638,11 +3658,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax4 optgroup[label="GST"]').show();
                            $('#tax4 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax4 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax4 optgroup[label="GST"]').hide();
                            $('#tax4 optgroup[label="IGST"]').show();
+                           var check = $('#tax4 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax4 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3678,11 +3703,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax5 optgroup[label="GST"]').show();
                            $('#tax5 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax5 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax5 optgroup[label="GST"]').hide();
                            $('#tax5 optgroup[label="IGST"]').show();
+                           var check = $('#tax5 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax5 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3718,11 +3748,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax6 optgroup[label="GST"]').show();
                            $('#tax6 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax6 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax6 optgroup[label="GST"]').hide();
                            $('#tax6 optgroup[label="IGST"]').show();
+                           var check = $('#tax6 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax6 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3758,11 +3793,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax7 optgroup[label="GST"]').show();
                            $('#tax7 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax7 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax7 optgroup[label="GST"]').hide();
                            $('#tax7 optgroup[label="IGST"]').show();
+                           var check = $('#tax7 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax7 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3795,14 +3835,19 @@ $.ajax({
                     // var sos = document.getElementById("state").value;
 
                     $(document).ready(function() {
-                       if(isGST()) {
+                      if(isGST()) {
                            $('#tax8 optgroup[label="GST"]').show();
                            $('#tax8 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax8 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax8 optgroup[label="GST"]').hide();
                            $('#tax8 optgroup[label="IGST"]').show();
+                           var check = $('#tax8 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax8 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3837,11 +3882,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax9 optgroup[label="GST"]').show();
                            $('#tax9 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax9 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax9 optgroup[label="GST"]').hide();
                            $('#tax9 optgroup[label="IGST"]').show();
+                           var check = $('#tax9 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax9 option:selected').html('0% IGST')
+                           }
                        }
                    });
                 }
@@ -3873,14 +3923,19 @@ $.ajax({
                     // var sos = document.getElementById("state").value;
 
                     $(document).ready(function() {
-                       if(isGST()) {
+                      if(isGST()) {
                            $('#tax10 optgroup[label="GST"]').show();
                            $('#tax10 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax10 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax10 optgroup[label="GST"]').hide();
                            $('#tax10 optgroup[label="IGST"]').show();
+                           var check = $('#tax10 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax10 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -3918,11 +3973,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax11 optgroup[label="GST"]').show();
                            $('#tax11 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax11 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax11 optgroup[label="GST"]').hide();
                            $('#tax11 optgroup[label="IGST"]').show();
+                           var check = $('#tax11 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax11 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -3960,11 +4020,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax12 optgroup[label="GST"]').show();
                            $('#tax12 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax12 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax12 optgroup[label="GST"]').hide();
                            $('#tax12 optgroup[label="IGST"]').show();
+                           var check = $('#tax12 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax12 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4002,11 +4067,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax13 optgroup[label="GST"]').show();
                            $('#tax13 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax13 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax13 optgroup[label="GST"]').hide();
                            $('#tax13 optgroup[label="IGST"]').show();
+                           var check = $('#tax13 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax13 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4044,11 +4114,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax14 optgroup[label="GST"]').show();
                            $('#tax14 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax14 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax14 optgroup[label="GST"]').hide();
                            $('#tax14 optgroup[label="IGST"]').show();
+                           var check = $('#tax14 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax14 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4086,11 +4161,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax15 optgroup[label="GST"]').show();
                            $('#tax15 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax15 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax15 optgroup[label="GST"]').hide();
                            $('#tax15 optgroup[label="IGST"]').show();
+                           var check = $('#tax15 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax15 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4128,11 +4208,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax16 optgroup[label="GST"]').show();
                            $('#tax16 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax16 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax16 optgroup[label="GST"]').hide();
                            $('#tax16 optgroup[label="IGST"]').show();
+                           var check = $('#tax16 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax16 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4170,11 +4255,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax17 optgroup[label="GST"]').show();
                            $('#tax17 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax17 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax17 optgroup[label="GST"]').hide();
                            $('#tax17 optgroup[label="IGST"]').show();
+                           var check = $('#tax17 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax17 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4212,11 +4302,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax18 optgroup[label="GST"]').show();
                            $('#tax18 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax18 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax18 optgroup[label="GST"]').hide();
                            $('#tax18 optgroup[label="IGST"]').show();
+                           var check = $('#tax18 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax18 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4251,14 +4346,19 @@ $.ajax({
                     // var sos = document.getElementById("state").value;
 
                     $(document).ready(function() {
-                       if(isGST()) {
+                      if(isGST()) {
                            $('#tax19 optgroup[label="GST"]').show();
                            $('#tax19 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax19 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax19 optgroup[label="GST"]').hide();
                            $('#tax19 optgroup[label="IGST"]').show();
+                           var check = $('#tax19 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax19 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4296,11 +4396,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax20 optgroup[label="GST"]').show();
                            $('#tax20 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax20 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax20 optgroup[label="GST"]').hide();
                            $('#tax20 optgroup[label="IGST"]').show();
+                           var check = $('#tax20 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax20 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4338,11 +4443,16 @@ $.ajax({
                       if(isGST()) {
                            $('#tax21 optgroup[label="GST"]').show();
                            $('#tax21 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax21 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax21 optgroup[label="GST"]').hide();
                            $('#tax21 optgroup[label="IGST"]').show();
+                           var check = $('#tax21 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax21 option:selected').html('0% IGST')
+                           }
                        }
                    });
 
@@ -4368,11 +4478,16 @@ $.ajax({
          if(isGST()){ 
              $(`#tax${selectId} optgroup[label="GST"]`).show();
              $(`#tax${selectId} optgroup[label="IGST"]`).hide();
+             if(check.indexOf('0% GST')==-1){
              $(`#tax${selectId} option:selected`).html('0% GST')
+             }
          } else {
              $(`#tax${selectId} optgroup[label="GST"]`).hide();
              $(`#tax${selectId} optgroup[label="IGST"]`).show();
+             var check = $('#tax option:selected').html()
+             if(check.indexOf('0% IGST')==-1){
              $(`#tax${selectId} option:selected`).html('0% IGST')
+             }
          }
      }
  
@@ -4661,11 +4776,16 @@ $('#due_date').prop('disabled', true);
                       if(isGST()) {
                            $('#tax1 optgroup[label="GST"]').show();
                            $('#tax1 optgroup[label="IGST"]').hide();
+                           if(check.indexOf('0% GST')==-1){
                            $('#tax1 option:selected').html('0% GST')
+                           }
                        } else {
                            $('#tax1 optgroup[label="GST"]').hide();
                            $('#tax1 optgroup[label="IGST"]').show();
+                           var check = $('#tax1 option:selected').html()
+                           if(check.indexOf('0% IGST')==-1){
                            $('#tax1 option:selected').html('0% IGST')
+                           }
                        }
                    });
 </script>
